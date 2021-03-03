@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/studenti',function (){
+    $studenti = new \App\Models\Studenti("1","Alaudin Behrami","16.02.2001","M");
+
+
+    return view('studenti',[
+        "studenti"=>$studenti
+    ]);
+});
