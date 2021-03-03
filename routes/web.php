@@ -17,11 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/studenti',function (){
-    $studenti = new \App\Models\Studenti("1","Alaudin Behrami","16.02.2001","M");
-
-
-    return view('studenti',[
-        "studenti"=>$studenti
-    ]);
-});
+Route::get('/studenti','App\Http\Controllers\StudentiController@studenti');
