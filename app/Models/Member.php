@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+    public $table= "gym_members";
 
     public function getId(){
         return $this->id;
