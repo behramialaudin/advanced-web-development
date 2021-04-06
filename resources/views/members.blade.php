@@ -10,7 +10,7 @@
     </head>
     <body>
 
-    <button id="btnSuccess"onclick="window.location='{{ route('index') }}'" type="button" class="btn btn-success">Add Member</button><br><br>
+    <button id="btnSuccess" onclick="window.location='{{ route('index') }}'" type="button" class="btn btn-success">Add Member</button><br><br>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -19,7 +19,9 @@
             <th scope="col">Last Name</th>
             <th scope="col">Birthdate</th>
             <th scope="col">Expire Date</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Profile Picture</th>
+            <th scope="col">Action</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -30,11 +32,19 @@
                 <td>{{$member->last_name}}</td>
                 <td>{{$member->birthdate}}</td>
                 <td>{{$member->expire_date}}</td>
-                <td>    <button type="button" class="btn btn-info">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                <td></td>
+                <td>
+                    <button type="button" class="btn btn-info">Edit</button>
+                </td>
+                <td>
+                    <form method="post" action="{{route('delete.member',$member->id)}}">
+                        @csrf
+                        @method('DELETE')
+                        <button  type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+
                 </td>
             </tr>
-
         @endforeach
         </tbody>
     </table>

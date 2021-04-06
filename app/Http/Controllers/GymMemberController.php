@@ -42,4 +42,16 @@ class GymMemberController extends Controller
             'members' => $members
         ]);
     }
+
+    public function deleteMember($id){
+        $member = Member::find($id);
+
+        if(!$member){
+            return abort(404);
+        }
+
+        $member->delete();
+
+        return redirect()->route('show.members');
+    }
 }
