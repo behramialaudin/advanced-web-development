@@ -32,7 +32,11 @@
                 <td>{{$member->last_name}}</td>
                 <td>{{$member->birthdate}}</td>
                 <td>{{$member->expire_date}}</td>
-                <td></td>
+                <td>  @if($member->profile_picture != null)
+                        <img width=100 height="100"
+                             src="{{url(str_replace("public/", 'storage/', $member->profile_picture))}}">
+                @endif
+                </td>
                 <td>
                     <button type="button" class="btn btn-info">Edit</button>
                 </td>
