@@ -38,7 +38,11 @@
                 @endif
                 </td>
                 <td>
-                    <button type="button" class="btn btn-info">Edit</button>
+                    <form method="post" action="{{route('editing.member',$member->id)}}">
+                        @csrf
+                        @method('PUT')
+                        <button  type="submit" class="btn btn-info">Edit</button>
+                    </form>
                 </td>
                 <td>
                     <form method="post" action="{{route('delete.member',$member->id)}}">

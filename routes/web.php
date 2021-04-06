@@ -22,3 +22,6 @@ Route::get('/index','App\Http\Controllers\GymMemberController@index')->name('ind
 Route::post('/create-member', 'App\Http\Controllers\GymMemberController@createNewMember')->name('create.gym.member');
 Route::get('/show-members','App\Http\Controllers\GymMemberController@showMembers')->name('show.members');
 Route::delete('/delete-member/{id}','App\Http\Controllers\GymMemberController@deleteMember')->name('delete.member');
+Route::put('/editing-member/{id}','App\Http\Controllers\GymMemberController@editingMember')->name('editing.member');
+Route::put('/edit-member/{id}','App\Http\Controllers\GymMemberController@editMember')->name('edit.member');
+

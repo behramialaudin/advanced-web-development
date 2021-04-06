@@ -54,4 +54,43 @@ class GymMemberController extends Controller
 
         return redirect()->route('show.members');
     }
+
+    public function editingMember($id){
+        $member = Member::find($id);
+
+        if(!$member){
+            return abort(404);
+        }
+
+        return view('edit_member',[
+            'member' => $member
+        ]);
+
+    }
+
+    public function editMember(Request $request,$id){
+        $member = Member::find($id);
+
+        if(!$member){
+            return abort(404);
+        }
+
+        $path = null;
+
+        if($request->profile_picture != null){
+            $path = $request->file('profile_picture')->store('public/images');
+            $path = str_replace("public/", 'storage/', $path);
+        }
+
+        $member->first_name = $request->first_name;
+        $member->last_name = $request->last_name;
+        $member->birthdate =  $request->birthdate;
+        $member->expire_date = $request->expire_date;
+        $member->profile_picture = $path;
+        $member->save();
+
+        return redirect()->route('show.members');
+
+
+    }
 }
