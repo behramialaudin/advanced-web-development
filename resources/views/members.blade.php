@@ -10,7 +10,6 @@
     </head>
     <body>
 
-
     <button id="btnSuccess"onclick="window.location='{{ route('index') }}'" type="button" class="btn btn-success">Add Member</button><br><br>
     <table class="table table-hover">
         <thead>
@@ -24,18 +23,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Alaudin</td>
-            <td>Behrami</td>
-            <td>16.02.2001</td>
-            <td>08.08.2021</td>
-            <td>    <button type="button" class="btn btn-info">Edit</button>
+        @foreach ($members as $member)
+            <tr>
+                <th scope="row">{{$member->id}}</th>
+                <td>{{$member->first_name}}</td>
+                <td>{{$member->last_name}}</td>
+                <td>{{$member->birthdate}}</td>
+                <td>{{$member->expire_date}}</td>
+                <td>    <button type="button" class="btn btn-info">Edit</button>
                     <button type="button" class="btn btn-danger">Delete</button>
-            </td>
+                </td>
+            </tr>
 
-            <td></td>
-        </tr>
+        @endforeach
         </tbody>
     </table>
 

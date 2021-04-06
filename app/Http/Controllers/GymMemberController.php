@@ -36,8 +36,10 @@ class GymMemberController extends Controller
     }
 
     public function showMembers(){
+        $members = Member::all();
 
         return view('members',[
+            'members' => $members
         ]);
     }
 }
