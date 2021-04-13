@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 
 class GymMemberController extends Controller
 {
-    function index(){
-
-        return view('index',[
-        ]);
-    }
 
    public function createNewMember(Request $request){
 
@@ -24,6 +19,7 @@ class GymMemberController extends Controller
             $path = $profilePicture->store('public/images');
             $path = str_replace("public/", 'storage/', $path);
         }
+
         $member = new Member();
         $member->first_name = $request->first_name;
         $member->last_name = $request->last_name;
@@ -75,18 +71,10 @@ class GymMemberController extends Controller
             return abort(404);
         }
 
-        $path = null;
-
-        if($request->profile_picture != null){
-            $path = $request->file('profile_picture')->store('public/images');
-            $path = str_replace("public/", 'storage/', $path);
-        }
-
         $member->first_name = $request->first_name;
         $member->last_name = $request->last_name;
         $member->birthdate =  $request->birthdate;
         $member->expire_date = $request->expire_date;
-        $member->profile_picture = $path;
         $member->save();
 
         return redirect()->route('show.members');

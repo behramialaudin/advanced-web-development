@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<button id="btnInfo"onclick="window.location='{{ route('show.members') }}'" type="button" class="btn btn-info">Show Member</button><br><br>
+<button id="btnInfo"onclick="window.location='{{ route('show.members') }}'" type="button" class="btn btn-info">Show Members</button><br><br>
         <form id="memberForm" method="post" action="{{route('create.gym.member')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">

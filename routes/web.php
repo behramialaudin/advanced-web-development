@@ -18,7 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/studenti','App\Http\Controllers\StudentiController@studenti');
-Route::get('/index','App\Http\Controllers\GymMemberController@index')->name('index');
+
+
+Route::get('/index',function (){return view('index');})->name('index');
 Route::post('/create-member', 'App\Http\Controllers\GymMemberController@createNewMember')->name('create.gym.member');
 Route::get('/show-members','App\Http\Controllers\GymMemberController@showMembers')->name('show.members');
 Route::delete('/delete-member/{id}','App\Http\Controllers\GymMemberController@deleteMember')->name('delete.member');

@@ -39,10 +39,6 @@
         <label>Expire Date</label>
         <input type="date" class="form-control" value="{{$member->expire_date}}"name="expire_date" >
     </div>
-    <div class="form-group">
-        <label>Profile Picture</label>
-        <input type="file" class="form-control"  name="profile_picture" >
-    </div>
 
     <button type="submit" class="btn btn-success">Edit Member</button>
 </form>
