@@ -27,3 +27,7 @@ Route::delete('/delete-member/{id}','App\Http\Controllers\GymMemberController@de
 Route::put('/editing-member/{id}','App\Http\Controllers\GymMemberController@editingMember')->name('editing.member');
 Route::put('/edit-member/{id}','App\Http\Controllers\GymMemberController@editMember')->name('edit.member');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
