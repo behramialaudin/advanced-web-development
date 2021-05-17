@@ -17,6 +17,7 @@
             <th scope="col">Id</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
             <th scope="col">Birthdate</th>
             <th scope="col">Expire Date</th>
             <th scope="col">Profile Picture</th>
@@ -30,6 +31,7 @@
                 <th scope="row">{{$member->id}}</th>
                 <td>{{$member->first_name}}</td>
                 <td>{{$member->last_name}}</td>
+                <td>{{$member->email}}</td>
                 <td>{{$member->birthdate}}</td>
                 <td>{{$member->expire_date}}</td>
                 <td>  @if($member->profile_picture != null)

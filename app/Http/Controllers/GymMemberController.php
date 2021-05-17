@@ -23,6 +23,7 @@ class GymMemberController extends Controller
         $member = new Member();
         $member->first_name = $request->first_name;
         $member->last_name = $request->last_name;
+        $member->email = $request->email;
         $member->birthdate =  $request->birthdate;
         $member->expire_date = $request->expire_date;
         $member->profile_picture = $path;

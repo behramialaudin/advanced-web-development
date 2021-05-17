@@ -18,6 +18,7 @@ class CreateGymMembersTable extends Migration
             $table->timestamps();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('email')->unique();
             $table->date('birthdate');
             $table->date('expire_date');
             $table->string('profile_picture')->nullable();

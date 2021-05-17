@@ -20,6 +20,8 @@
 </head>
 
 <body>
+
+
 <button id="btnInfo"onclick="window.location='{{ route('show.members') }}'" type="button" class="btn btn-info">Show Members</button><br><br>
         <form id="memberForm" method="post" action="{{route('create.gym.member')}}" enctype="multipart/form-data">
             @csrf
@@ -30,6 +32,10 @@
             <div class="form-group">
                 <label>Last Name</label>
                 <input type="text" class="form-control" name="last_name" >
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email">
             </div>
             <div class="form-group">
                 <label>Birthdate</label>
