@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 
 use App\Jobs\SendEmailJob;
+use App\Jobs\SendMailThreeDaysBeforeExpiringJob;
 use App\Jobs\SendMailToCanceledMemberJob;
 use App\Jobs\SendMailToExpiredGymMembershipJob;
+use App\Jobs\SendMailTwoDaysBeforeExpiringJob;
 use App\Mail\SendMailable;
 use App\Mail\SendMailToCanceledMember;
 use App\Models\Member;
@@ -38,7 +40,7 @@ class GymMemberController extends Controller
 
 
         $job =(new SendEmailJob($request->email))
-            ->delay(Carbon::now()->addSeconds(15));
+            ->delay(Carbon::now()->addMinutes(2));
 
         dispatch($job);
 
@@ -46,6 +48,18 @@ class GymMemberController extends Controller
            ->delay(Carbon::parse($request->expire_date));
 
        dispatch($job2);
+
+       $job3 =(new SendMailTwoDaysBeforeExpiringJob($request->email))
+           ->delay(Carbon::parse($request->expire_date)->subDays(2));
+
+       dispatch($job3);
+
+       $job4 =(new SendMailThreeDaysBeforeExpiringJob($request->email))
+           ->delay(Carbon::parse($request->expire_date)->subDays(3));
+
+       dispatch($job4);
+
+
 
        return redirect()->route('index');
     }

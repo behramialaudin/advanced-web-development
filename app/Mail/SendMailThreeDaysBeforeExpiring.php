@@ -7,10 +7,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendMailToExpiredGymMembership extends Mailable
+class SendMailThreeDaysBeforeExpiring extends Mailable
 {
     use Queueable, SerializesModels;
-
 
     /**
      * Create a new message instance.
@@ -19,7 +18,7 @@ class SendMailToExpiredGymMembership extends Mailable
      */
     public function __construct()
     {
-
+        //
     }
 
     /**
@@ -29,10 +28,6 @@ class SendMailToExpiredGymMembership extends Mailable
      */
     public function build()
     {
-//        return $this->view('membership_expired',[
-//            'message' => $this->message
-//        ]);
-
-        return $this->view('membershi_expired');
+        return $this->view('three_days_before_expiration');
     }
 }
