@@ -4,8 +4,14 @@
 namespace App\Http\Controllers;
 
 
+use App\Jobs\SendEmailJob;
+use App\Jobs\SendMailToCanceledMemberJob;
+use App\Mail\SendMailable;
+use App\Mail\SendMailToCanceledMember;
 use App\Models\Member;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class GymMemberController extends Controller
 {
@@ -29,6 +35,11 @@ class GymMemberController extends Controller
         $member->profile_picture = $path;
         $member->save();
 
+        $job =(new SendEmailJob($request->email))
+            ->delay(Carbon::now()->addSeconds(15));
+
+        dispatch($job);
+
        return redirect()->route('index');
     }
 
@@ -47,7 +58,11 @@ class GymMemberController extends Controller
             return abort(404);
         }
 
+        $job =(new SendMailToCanceledMemberJob($member->email));
+        dispatch($job);
+
         $member->delete();
+
 
         return redirect()->route('show.members');
     }

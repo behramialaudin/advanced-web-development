@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 <html>
 <head>
 
@@ -18,7 +20,12 @@
     </style>
 
 </head>
-<body>
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+
+        </div>
+    </div>
 
 <form id="memberForm" method="post" action="{{route('edit.member',$member->id)}}" enctype="multipart/form-data">
     @csrf
@@ -43,7 +50,7 @@
     <button type="submit" class="btn btn-success">Edit Member</button>
 </form>
 
-</body>
+@endsection
 
 
 </html>

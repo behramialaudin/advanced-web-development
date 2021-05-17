@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 <hmtl>
     <head>
         <title>Members</title>
@@ -8,7 +10,12 @@
             }
         </style>
     </head>
-    <body>
+    @section('content')
+        <div class="container">
+            <div class="row justify-content-center">
+
+            </div>
+        </div>
 
     <button id="btnSuccess" onclick="window.location='{{ route('index') }}'" type="button" class="btn btn-success">Add Member</button><br><br>
     <table class="table table-hover">
@@ -59,7 +66,7 @@
         </tbody>
     </table>
 
-    </body>
+    @endsection
 
 
 </hmtl>
