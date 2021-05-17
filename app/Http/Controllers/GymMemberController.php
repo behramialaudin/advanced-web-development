@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\SendEmailJob;
 use App\Jobs\SendMailToCanceledMemberJob;
+use App\Jobs\SendMailToExpiredGymMembershipJob;
 use App\Mail\SendMailable;
 use App\Mail\SendMailToCanceledMember;
 use App\Models\Member;
@@ -35,10 +36,16 @@ class GymMemberController extends Controller
         $member->profile_picture = $path;
         $member->save();
 
+
         $job =(new SendEmailJob($request->email))
             ->delay(Carbon::now()->addSeconds(15));
 
         dispatch($job);
+
+       $job2 =(new SendMailToExpiredGymMembershipJob($request->email))
+           ->delay(Carbon::parse($request->expire_date));
+
+       dispatch($job2);
 
        return redirect()->route('index');
     }
