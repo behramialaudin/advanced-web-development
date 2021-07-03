@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Mail\SendMailable;
+use App\Mail\SendMailToOurNewMember;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -35,6 +35,6 @@ class SendEmailJob implements ShouldQueue
     public function handle()
     {
 
-        Mail::to($this->email)->send(new SendMailable());
+        Mail::to($this->email)->send(new SendMailToOurNewMember());
     }
 }

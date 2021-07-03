@@ -9,7 +9,7 @@ use App\Jobs\SendMailThreeDaysBeforeExpiringJob;
 use App\Jobs\SendMailToCanceledMemberJob;
 use App\Jobs\SendMailToExpiredGymMembershipJob;
 use App\Jobs\SendMailTwoDaysBeforeExpiringJob;
-use App\Mail\SendMailable;
+use App\Mail\SendMailToOurNewMember;
 use App\Mail\SendMailToCanceledMember;
 use App\Models\Member;
 use Carbon\Carbon;
